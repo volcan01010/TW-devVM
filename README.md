@@ -39,7 +39,7 @@ them in a different way:
 
 #### Install IDEs via umake
 
-Eclipse (Luna) and Pycharm can be installed with the umake tool.
+Eclipse (Luna) and Pycharm can be (were) installed with the umake tool.
 
     umake ide eclipse
     umake ide pycharm

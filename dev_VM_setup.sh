@@ -68,12 +68,12 @@ python-flake8 \
 python-pip \
 r-base \
 skype \
-skype \
 spyder \
 sqlite3 \
 sqliteman \
 subversion \
 ttf-mscorefonts-installer \
+ubuntu-make \
 unison \
 vim-gtk \
 xclip
@@ -119,9 +119,15 @@ pandas \
 virtualenv \
 pyzmq
 
+# Get nice VIM settings
+cd ~
+git clone --recursive http://github.com/volcan01010/dotfiles-vim .vim
+
 # Downgrade to 3.1.0 for working with QGIS IPython console
 sudo pip install ipython[all]==3.1.0 --upgrade
 
 # Copy all the files that you want all users to have to the /etc/skel directory.
 cd ~
-sudo cp bin dev dotfiles TW_devVM X Y T Desktop .bashrc .config /etc/skel -R
+sudo cp bin dev dotfiles TW_devVM X Y T Desktop .bashrc .qgis2 .config .vim /etc/skel -R
+sudo cp --parents .local/share/umake/ide /etc/skel -R
+sudo rm -rf /etc/skel/.mozilla
