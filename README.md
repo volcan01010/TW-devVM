@@ -7,8 +7,9 @@
 
 +  Install Oracle VM VirtualBox Manager on your machine
 +  Create the C:\dev, C:\dotfiles directories on your machine
-+  Copy the TW_devVM directory into your VirtualBox VMs directory
++  Copy the TW_devVM directory from  _T:\Operations\Products\Software\Client\_ into your VirtualBox VMs directory
 +  Start the image
++  On first boot, you will be asked to choose a username and password
 
 #### Accessing drives on your machine
 
