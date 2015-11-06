@@ -27,12 +27,11 @@ sudo touch /etc/apt/sources.list.d/qgis-ubuntugis.list
 echo "deb http://qgis.org/ubuntugis trusty main" | \
     sudo tee -a  /etc/apt/sources.list.d/qgis-ubuntugis.list 
 wget --quiet -O - postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
-sudo apt-add-repository -y \
-    ppa:ubuntugis/ubuntugis-unstable
-    ppa:georepublic/pgrouting \
-    ppa:andrei-pozolotin/maven3 \
-    ppa:openjdk-r/ppa \
-    ppa:ubuntu-desktop/ubuntu-make \
+sudo apt-add-repository -y ppa:ubuntugis/ubuntugis-unstable 
+sudo apt-add-repository -y ppa:georepublic/pgrouting 
+sudo apt-add-repository -y ppa:andrei-pozolotin/maven3 
+sudo apt-add-repository -y ppa:openjdk-r/ppa 
+sudo apt-add-repository -y ppa:ubuntu-desktop/ubuntu-make 
 
 # Update package list
 sudo apt-get update
@@ -109,6 +108,7 @@ qt4-designer
 cd ~/Downloads
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome-stable_current_amd64.deb
+sudo apt-get install -f -y
 cd ~
 
 # Update and install python packages using pip
