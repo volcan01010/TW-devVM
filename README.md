@@ -97,8 +97,8 @@ postgresql-9.4-pgrouting
 +  Use Linux Mint OEM image, so each user gets to set own preferences
 +  Install Linux from the .iso file (username _oem_, password _TWAdm1n_)
 +  Shut down the virtual machine
-+  Make a full clone of TW_devVM_vanilla, called TW_devVM
-+  Start up TW_devVM
++  Make a full clone of TW_devVM_vanilla, called TW_devVM_prep
++  Start up TW_devVM_prep
 
 #### Preparation of the software and settings
 
@@ -131,6 +131,8 @@ postgresql-9.4-pgrouting
 
 #### Sharing the virtual machine image
 
++  Pause the TW_devVM_prep machine, then close and Save Machine State
++  Make a full clone into TW_dev_VM, and start the new machine
 +  Run 'Prepare for shipping to end user' from the desktop
 +  Delete desktop icon from the skeleton directory:
 

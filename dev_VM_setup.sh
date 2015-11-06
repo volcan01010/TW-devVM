@@ -5,11 +5,11 @@
 cd ~
 
 #  Add links to the shared directories:
-ln -s /media/sf_dev /home/oem/dev
-ln -s /media/sf_dotfiles /home/oem/dotfiles
-ln -s /media/sf_T_DRIVE /home/oem/T
-ln -s /media/sf_X_DRIVE /home/oem/X
-ln -s /media/sf_Y_DRIVE /home/oem/Y
+ln -s /media/sf_dev ${HOME}/dev
+ln -s /media/sf_dotfiles ${HOME}/dotfiles
+ln -s /media/sf_T_DRIVE ${HOME}/T
+ln -s /media/sf_X_DRIVE ${HOME}/X
+ln -s /media/sf_Y_DRIVE ${HOME}/Y
 
 # Make new users members of _vboxsf_ automatically
 echo "ADD_EXTRA_GROUPS=1" | sudo tee -a  /etc/adduser.conf
@@ -122,10 +122,6 @@ pyzmq
 # Downgrade to 3.1.0 for working with QGIS IPython console
 sudo pip install ipython[all]==3.1.0 --upgrade
 
-# Pull the TW_devVM repo
-cd ~
-git clone 
-
 # Copy all the files that you want all users to have to the /etc/skel directory.
 cd ~
-sudo cp bin dev dotfiles TW_devVM X Y T Desktop .config /etc/skel -R
+sudo cp bin dev dotfiles TW_devVM X Y T Desktop .bashrc .config /etc/skel -R
