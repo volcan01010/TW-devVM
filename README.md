@@ -30,7 +30,9 @@ them in a different way:
    /home/..../plugins/Roadnet)
 +  Add the following command to the /etc/rc.local file, above exit 0:
 
+     ```
      mount -t vboxsf -o rw,gid=1000,uid=1000 sharename /path/to/new/dir
+     ```
 
 +  After a reboot of the virtual machine, you should be able to access the
    files.
@@ -49,6 +51,9 @@ file into your ~/bin directory:
 
 
 #### Install server apps
+
+Server apps are not installed by default.  They can be installed with the
+following commands:
 
 ```
 # install packages - Web
@@ -70,13 +75,17 @@ postgresql-9.4-pgrouting
 
 + Switch between installed java versions
 
+    ```
     sudo update-alternatives --config java
     sudo update-alternatives --config javac
     java -version
+    ```
 
 + Pick your default editor
 
+    ```
     sudo update-alternatives --config editor
+    ```
 
 - - - - - - - -
 
@@ -101,15 +110,21 @@ postgresql-9.4-pgrouting
 
 +  Clone the git repository with the installation scripts:
 
-    git clone https://tw-johns@stash.luminis.net/scm/~tw-johns/tw_devvm.git
-    TW_devVM
+    ```
+    git clone https://tw-johns@stash.luminis.net/scm/~tw-johns/tw_devvm.git TW_devVM
+    ```
 
 +  Move into the directory and run the setup script:
 
+    ```
     cd TW_devVM
     bash dev_VM_setup.sh
+    ```
 
 +  Set up and personalise other settings e.g. install QGIS plugins
+    + Zoom to postcode
+    + OpenLayers
+    + IPython terminal
 
 
 #### Sharing the virtual machine image
@@ -119,9 +134,11 @@ postgresql-9.4-pgrouting
 +  Start up TW_devVM
 +  Run 'Prepare for shipping to end user' from the desktop
 +  Delete desktop icon from the skeleton directory:
-```
-sudo rm /etc/skel/Desktop/Prepare\ for\ shipping\ to\ end\ user
-```
+
+    ```
+    sudo rm /etc/skel/Desktop/Prepare\ for\ shipping\ to\ end\ user
+    ```
+
 +  Shutdown the virtual machine
 +  Copy to the TW_devVM directory from the VirtualBox VMs directory onto the
-   network at T:\Operations\Products\Software\Client\
+   network at _T:\Operations\Products\Software\Client\_
