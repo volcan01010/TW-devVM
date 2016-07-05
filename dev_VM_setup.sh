@@ -111,6 +111,9 @@ sudo dpkg -i google-chrome-stable_current_amd64.deb
 sudo apt-get install -f -y
 cd ~
 
+# Consider installing keepassx from source here
+echo KEEEEEEEEEEEPPPPPAAAAAAAAAAASSSSS
+
 # Update and install python packages using pip
 sudo pip install --upgrade \
 ipython[all] \
@@ -131,3 +134,4 @@ cd ~
 sudo cp bin dev dotfiles TW_devVM X Y T Desktop .bashrc .qgis2 .config .vim /etc/skel -R
 sudo cp --parents .local/share/umake/ide /etc/skel -R
 sudo rm -rf /etc/skel/.mozilla
+
