@@ -6,9 +6,7 @@ cd ~
 
 #  Add links to the shared directories:
 ln -s /media/sf_dev ${HOME}/dev
-ln -s /media/sf_dotfiles ${HOME}/dotfiles
 ln -s /media/sf_T_DRIVE ${HOME}/T
-ln -s /media/sf_X_DRIVE ${HOME}/X
 ln -s /media/sf_Y_DRIVE ${HOME}/Y
 
 # Make new users members of _vboxsf_ automatically
@@ -21,16 +19,11 @@ echo "export PATH=${HOME}/bin:${PATH}" >> .bashrc
 
 
 ## Add additional repositories
-sudo add-apt-repository "deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main"
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key 3FF5FFCAD71472C4
 sudo touch /etc/apt/sources.list.d/qgis-ubuntugis.list
-echo "deb http://qgis.org/ubuntugis trusty main" | \
+echo "deb http://qgis.org/ubuntugis xenial main" | \
     sudo tee -a  /etc/apt/sources.list.d/qgis-ubuntugis.list 
-wget --quiet -O - postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
 sudo apt-add-repository -y ppa:ubuntugis/ubuntugis-unstable 
-sudo apt-add-repository -y ppa:georepublic/pgrouting 
-sudo apt-add-repository -y ppa:andrei-pozolotin/maven3 
-sudo apt-add-repository -y ppa:openjdk-r/ppa 
 sudo apt-add-repository -y ppa:ubuntu-desktop/ubuntu-make 
 
 # Update package list
@@ -66,6 +59,7 @@ postgresql-client \
 python-dev \
 python-flake8 \
 python-pip \
+python-future \
 r-base \
 skype \
 spyder \
@@ -75,7 +69,8 @@ subversion \
 ttf-mscorefonts-installer \
 ubuntu-make \
 unison \
-vim-gtk \
+vim-gtk \ 
+virtualbox-guest-dkms \
 xclip
 
 # install packages - GIS
@@ -104,19 +99,33 @@ python-qt4-sql \
 pyqt4-dev-tools \
 qt4-designer
 
-# Install Google Chrome
-cd ~/Downloads
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo dpkg -i google-chrome-stable_current_amd64.deb
-sudo apt-get install -f -y
-cd ~
-
 # Consider installing keepassx from source here
 echo KEEEEEEEEEEEPPPPPAAAAAAAAAAASSSSS
+sudo apt-get install \
+build-essential \
+cmake \
+qtbase5-dev \
+libqt5x11extras5-dev \
+qttools5-dev \
+qttools5-dev-tools \
+libgcrypt20-dev \
+zlib1g-dev
+
+mkdir src
+cd src
+git clone https://github.com/keepassx/keepassx
+cd keepassx
+mkdir build
+cd build
+cmake ..
+make
+sudo make install
+
 
 # Update and install python packages using pip
 sudo pip install --upgrade \
 ipython[all] \
+ipdb \
 qtconsole \
 pandas \
 virtualenv \
@@ -129,9 +138,12 @@ git clone --recursive http://github.com/volcan01010/dotfiles-vim .vim
 # Downgrade to 3.1.0 for working with QGIS IPython console
 sudo pip install ipython[all]==3.1.0 --upgrade
 
+# Install pycharm with umake
+umake ide pycharm
+
 # Copy all the files that you want all users to have to the /etc/skel directory.
 cd ~
-sudo cp bin dev dotfiles TW_devVM X Y T Desktop .bashrc .qgis2 .config .vim /etc/skel -R
+sudo cp bin dev Y T Desktop .bashrc .qgis2 .config .vim /etc/skel -R
 sudo cp --parents .local/share/umake/ide /etc/skel -R
 sudo rm -rf /etc/skel/.mozilla
 
