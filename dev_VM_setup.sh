@@ -7,7 +7,6 @@ cd ~
 #  Add links to the shared directories:
 ln -s /media/sf_dev ${HOME}/dev
 ln -s /media/sf_T_DRIVE ${HOME}/T
-ln -s /media/sf_Y_DRIVE ${HOME}/Y
 
 # Make new users members of _vboxsf_ automatically
 echo "ADD_EXTRA_GROUPS=1" | sudo tee -a  /etc/adduser.conf
@@ -43,9 +42,10 @@ gedit \
 gedit-plugins \
 gftp \
 gimp \
+git \
 gitg \
+hamster-indicator \
 inkscape \
-keepass2 \
 libcurl3 \
 libzmq-dev \
 maven3 \
@@ -57,6 +57,7 @@ pep8 \
 pgadmin3 \
 postgresql-client \
 python-dev \
+python3-dev \
 python-flake8 \
 python-pip \
 python-future \
@@ -71,6 +72,7 @@ ubuntu-make \
 unison \
 vim-gtk \ 
 virtualbox-guest-dkms \
+virtualenv \
 xclip
 
 # install packages - GIS
@@ -121,29 +123,16 @@ cmake ..
 make
 sudo make install
 
-
-# Update and install python packages using pip
-sudo pip install --upgrade \
-ipython[all] \
-ipdb \
-qtconsole \
-pandas \
-virtualenv \
-pyzmq
-
 # Get nice VIM settings
 cd ~
 git clone --recursive http://github.com/volcan01010/dotfiles-vim .vim
 
-# Downgrade to 3.1.0 for working with QGIS IPython console
-sudo pip install ipython[all]==3.1.0 --upgrade
-
 # Install pycharm with umake
-umake ide pycharm
+umake ide pycharm-professional
 
 # Copy all the files that you want all users to have to the /etc/skel directory.
-cd ~
-sudo cp bin dev Y T Desktop .bashrc .qgis2 .config .vim /etc/skel -R
-sudo cp --parents .local/share/umake/ide /etc/skel -R
-sudo rm -rf /etc/skel/.mozilla
+#cd ~
+#sudo cp bin dev Y T Desktop .bashrc .qgis2 .config .vim /etc/skel -R
+#sudo cp --parents .local/share/umake/ide /etc/skel -R
+#sudo rm -rf /etc/skel/.mozilla
 
