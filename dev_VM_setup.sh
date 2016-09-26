@@ -6,6 +6,8 @@
 cd ~
 
 ## Add additional repositories
+
+### QGIS
 wget -O - http://qgis.org/downloads/qgis-2016.gpg.key | gpg --import
 gpg --fingerprint 073D307A618E5811
 gpg --export --armor 073D307A618E5811 | sudo apt-key add -
@@ -15,10 +17,9 @@ echo "deb http://qgis.org/ubuntugis xenial main" | \
     sudo tee -a  /etc/apt/sources.list.d/qgis-ubuntugis.list 
 sudo apt-add-repository -y ppa:ubuntugis/ubuntugis-unstable 
 
-# Note that Partner repositories must be enabled to get Skype
+### Deadsnakes (needed for python3.4 needed by FME)
+sudo add-apt-repository ppa:fkrull/deadsnakes
 
-# another repo for pycharm
-sudo add-apt-repository ppa:mystic-mirage/pycharm
 
 # Update package list
 sudo apt-get update
